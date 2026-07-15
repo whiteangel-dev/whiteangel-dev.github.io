@@ -7,7 +7,6 @@ import { ToastProvider } from "@/components/providers/ToastProvider";
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { publicUrl } from "@/constants";
 import personalInfo from "@/data/personal-info.json";
-import { Analytics } from '@vercel/analytics/next';
 
 const myUrl = process.env.NEXT_PUBLIC_SITE_URL || publicUrl;
 
@@ -127,7 +126,6 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
             </TooltipProvider>
           </QueryProvider>
         </ThemeProvider>
-        <Analytics />
       </body>
     </html>
   );

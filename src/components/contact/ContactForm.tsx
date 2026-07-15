@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { sendContactEmail, type ContactFormData } from '@/lib/actions/contact';
+import personalInfo from '@/data/personal-info.json';
+import { buildContactMailtoLink, type ContactFormData } from '@/lib/actions/contact';
 
 interface FormData {
   name: string;
@@ -35,43 +36,35 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
-      // Send email using server action
-      const result = await sendContactEmail(formData as ContactFormData);
-      
-      if (result.success) {
-        toast({
-          title: "Message sent successfully!",
-          description: result.message,
-          action: (
-            <CheckCircle className="h-5 w-5 text-green-500" />
-          ),
-        });
-        
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        });
-      } else {
-        toast({
-          title: "Failed to send message",
-          description: result.message,
-          variant: "destructive",
-          action: (
-            <AlertCircle className="h-5 w-5 text-red-500" />
-          ),
-        });
-      }
+      const mailtoLink = buildContactMailtoLink(
+        formData as ContactFormData,
+        personalInfo.personal.email
+      );
+
+      window.location.href = mailtoLink;
+
+      toast({
+        title: 'Email app opened',
+        description: 'Your message is ready to send from your mail app.',
+        action: (
+          <CheckCircle className="h-5 w-5 text-green-500" />
+        ),
+      });
+
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
     } catch (error) {
       console.error('Contact form error:', error);
       toast({
-        title: "Error",
-        description: "An unexpected error occurred. Please try again.",
-        variant: "destructive",
+        title: 'Error',
+        description: 'An unexpected error occurred. Please try again.',
+        variant: 'destructive',
         action: (
           <AlertCircle className="h-5 w-5 text-red-500" />
         ),

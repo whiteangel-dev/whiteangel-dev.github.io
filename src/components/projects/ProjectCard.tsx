@@ -9,11 +9,11 @@ interface Project {
   readonly description: string;
   readonly longDescription: string;
   readonly technologies: readonly string[];
-  readonly github: string;
+  readonly github?: string;
   readonly featured: boolean;
   readonly categories: readonly string[];
   readonly image: string;
-  readonly status: string;
+  readonly status?: string;
   readonly priority?: number;
 }
 

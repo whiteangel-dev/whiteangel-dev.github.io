@@ -1,34 +1,48 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
+  trailingSlash: true,
+  images: {
+      unoptimized: true,
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "**",
+        },
+      ],
+    },
   typescript: {
     ignoreBuildErrors: false,
   },
+
   eslint: {
     ignoreDuringBuilds: false,
   },
+
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '**',
+        protocol: "https",
+        hostname: "**",
       },
     ],
   },
+
   experimental: {
-    optimizePackageImports: ['lucide-react'],
+    optimizePackageImports: ["lucide-react"],
   },
+
   // Fix for ChunkLoadError during development
   webpack: (config, { dev, isServer }) => {
     if (dev && !isServer) {
-      // Increase chunk loading timeout for development
-      config.output.chunkLoadTimeout = 120000; // 2 minutes
-      
-      // Optimize chunk splitting for development
+      config.output.chunkLoadTimeout = 120000;
+
       config.optimization = {
         ...config.optimization,
         splitChunks: {
           ...config.optimization.splitChunks,
-          chunks: 'all',
+          chunks: "all",
           cacheGroups: {
             ...config.optimization.splitChunks?.cacheGroups,
             default: {
@@ -38,24 +52,25 @@ const nextConfig = {
             },
             vendor: {
               test: /[\\/]node_modules[\\/]/,
-              name: 'vendors',
+              name: "vendors",
               priority: -10,
-              chunks: 'all',
+              chunks: "all",
             },
           },
         },
       };
     }
+
     return config;
   },
-  // Development server configuration
-  ...(process.env.NODE_ENV === 'development' && {
+
+  ...(process.env.NODE_ENV === "development" && {
     devIndicators: {
-      position: 'bottom-right',
+      position: "bottom-right",
     },
-    // Reduce memory usage during development
+
     onDemandEntries: {
-      maxInactiveAge: 60 * 1000, // 1 minute
+      maxInactiveAge: 60 * 1000,
       pagesBufferLength: 2,
     },
   }),

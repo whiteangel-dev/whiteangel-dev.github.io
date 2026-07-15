@@ -12,11 +12,11 @@ interface Project {
   readonly description: string;
   readonly longDescription: string;
   readonly technologies: readonly string[];
-  readonly github: string;
+  readonly github?: string;
   readonly featured: boolean;
   readonly categories: readonly string[];
   readonly image: string;
-  readonly status: string;
+  readonly status?: string;
   readonly priority?: number;
 }
 
@@ -42,7 +42,7 @@ const Projects: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Featured <span className="gradient-text">Projects</span>
+            Example <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Innovative solutions that bridge AI/ML technology with real-world impact
@@ -50,7 +50,6 @@ const Projects: React.FC = () => {
         </div>
 
         {/* Category Filter - CLIENT COMPONENT FOR INTERACTIVITY */}
-        <ProjectFilter categories={categories} />
 
         {/* Projects Grid - ALL PROJECTS SERVER-RENDERED FOR SEO */}
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -60,7 +59,7 @@ const Projects: React.FC = () => {
         </div>
 
         {/* Call to Action */}
-        <CallToAction />
+        <CallToAction />  
       </div>
     </section>
   );

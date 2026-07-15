@@ -4,14 +4,7 @@ import { Code2, Brain, Server, Monitor, Cloud, type LucideIcon } from 'lucide-re
 import SkillCategory from './SkillCategory';
 import SkillsSummary from './SkillsSummary';
 import personalInfo from '@/data/personal-info.json';
-
-interface Skill {
-  readonly name: string;
-  readonly experience: string;
-  readonly context: string;
-  readonly category: string;
-  readonly icon: string;
-}
+import type { Skill } from './types';
 
 interface SkillCategoryData {
   readonly title: string;

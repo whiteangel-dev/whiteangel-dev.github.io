@@ -17,7 +17,7 @@ const ContactInfo: React.FC = () => {
       value: personalInfo.personal.phone, 
       href: personalInfo.social.phone 
     },
-    { 
+    {   
       icon: <MapPin size={20} className="text-white stroke-2" />, 
       label: "Location", 
       value: personalInfo.personal.location, 
@@ -38,6 +38,7 @@ const ContactInfo: React.FC = () => {
             href={item.href}
             className="flex items-center space-x-4 group hover:text-primary transition-colors duration-200"
           >
+            
             <div className="w-12 h-12 iconic rounded-lg bg-primary group-hover:scale-110 transition-transform duration-300 flex items-center justify-center flex-shrink-0">
               {item.icon}
             </div>

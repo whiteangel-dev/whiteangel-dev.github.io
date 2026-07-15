@@ -16,12 +16,6 @@ const SocialLinks: React.FC = () => {
       label: 'LinkedIn',
       href: personalInfo.social.linkedin.url,
       username: personalInfo.social.linkedin.username
-    },
-    {
-      icon: BookOpenText,
-      label: 'Medium',
-      href: personalInfo.social.medium.url,
-      username: personalInfo.social.medium.username
     }
   ];
 

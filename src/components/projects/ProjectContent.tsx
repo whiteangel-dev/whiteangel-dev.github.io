@@ -10,9 +10,9 @@ interface ProjectContentProps {
     subtitle: string;
     description: string;
     technologies: readonly string[];
-    github: string;
+    github?: string;
     featured: boolean;
-    status: string;
+    status?: string;
   };
 }
 

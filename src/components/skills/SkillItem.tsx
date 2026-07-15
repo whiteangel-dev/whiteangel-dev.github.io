@@ -2,14 +2,7 @@ import React from 'react';
 import { Clock, Briefcase } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import TechnologyIcon from './TechnologyIcon';
-
-interface Skill {
-  readonly name: string;
-  readonly experience: string;
-  readonly context: string;
-  readonly category: string;
-  readonly icon: string;
-}
+import type { Skill } from './types';
 
 interface SkillItemProps {
   skill: Skill;
@@ -52,7 +45,7 @@ const SkillItem: React.FC<SkillItemProps> = ({ skill }) => {
             {skill.name}
           </span>
           <span className="text-xs text-muted-foreground hidden sm:inline truncate">
-            {skill.context}
+            {skill.context ?? ''}
           </span>
         </div>
       </div>

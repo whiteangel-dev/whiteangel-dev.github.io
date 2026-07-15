@@ -9,7 +9,7 @@ interface ProjectImageProps {
     title: string;
     subtitle: string;
     image: string;
-    github: string;
+    github?: string;
   };
 }
 

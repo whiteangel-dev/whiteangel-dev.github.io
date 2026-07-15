@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
           {/* Quick Links */}
           <QuickLinks />
 
-          {/* Contact Info */}
+          {/* Contact Info */}  
           <ContactInfo />
         </div>
 

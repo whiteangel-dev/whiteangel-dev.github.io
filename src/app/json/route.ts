@@ -1,5 +1,7 @@
 import personalInfo from '@/data/personal-info.json';
 
+export const dynamic = 'force-static';
+
 export type PersonalInfo = typeof personalInfo;
 export type PublicPersonalInfo = Omit<PersonalInfo, 'seo'>;
 
